@@ -31,7 +31,7 @@ Class JSONFile {
         ObjRelease(&this)
         FileObj := FileOpen(File, "rw")
         if !IsObject(FileObj) {
-            throw Exception("Can't access file for JSONFile instance: " File, -1)
+            throw Error("Can't access file for JSONFile instance: " File, -1)
         }
         if (exists) {
             try {
