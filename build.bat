@@ -2,11 +2,14 @@
 @set OLDPROMPT=%PROMPT%
 @PROMPT $G$S
 
+set COMPILER="%AHK_COMPILER%"
+set BINFILE="%AHK2_COMPILER_BINFILE%"
+
 :: Kill existing processes that will affect builds
 tasklist /fi "imagename eq tmp.exe" |find ":" > nul
 if errorlevel 1 taskkill /f /im "tmp.exe"
 
-"C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe" /in ".\tmp.ahk" /out ".\tmp.exe" 
+%COMPILER% /base %BINFILE% /in "%CD%\tmp.ahk" /out "%CD%\tmp.exe" 
 
 :: Reset the prompt
 @PROMPT %OLDPROMPT%
